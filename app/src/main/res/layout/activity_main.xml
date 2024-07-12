@@ -3,29 +3,44 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#F4E0DF"
+    android:background="@drawable/background"
     android:padding="20px">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/insta"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Username :"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="bold"/>
     <EditText
         android:layout_width="match_parent"
+        android:textColorHint="@color/cardview_light_background"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cardview_light_background"
         android:hint="enter username"
+        android:textColor="@color/cardview_light_background"
+        android:drawableLeft="@drawable/baseline_man_24"
         android:id="@+id/ed1"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password :"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="bold"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="enter password"
+        android:textColorHint="@color/cardview_light_background"
+
+        android:textColor="@color/cardview_light_background"
         android:inputType="textPassword"
+        android:backgroundTint="@color/cardview_light_background"
+        android:drawableLeft="@drawable/baseline_catching_pokemon_24"
         android:id="@+id/ed2"/>
 
     <androidx.appcompat.widget.AppCompatButton

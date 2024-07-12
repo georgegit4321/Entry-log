@@ -1,6 +1,8 @@
 package com.example.entrylog;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences pref= getSharedPreferences("logg",MODE_PRIVATE);
+        String username = pref.getString("user",null);
+        if(username != null){
+            Intent i = new Intent(getApplicationContext(), EntryLog.class);
+            startActivity(i);
+        }
+
         ed1=(EditText) findViewById(R.id.ed1);
         ed2=(EditText) findViewById(R.id.ed2);
         b1=(AppCompatButton) findViewById(R.id.b1);
@@ -32,7 +42,19 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     s1 = ed1.getText().toString();
                     s2 = ed2.getText().toString();
-                    Toast.makeText(getApplicationContext(),s1+"  "+s2,Toast.LENGTH_SHORT).show();
+                    if(s1.equals("admin")&&s2.equals("123")){
+
+                        SharedPreferences pref= getSharedPreferences("logg",MODE_PRIVATE);
+                        SharedPreferences.Editor editor=pref.edit();
+                        editor.putString("user","admin");
+                        editor.apply();
+
+                        Intent i = new Intent(getApplicationContext(), EntryLog.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"entered information is wrong",Toast.LENGTH_SHORT).show();
+                    }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),"invalid",Toast.LENGTH_SHORT).show();
                 }
